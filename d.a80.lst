@@ -5,10 +5,10 @@
 0008   1E 00                  MVI   E,00   ; 
 000A   26 00                  MVI   H,00   ; 
 000C   2E 00                  MVI   L,00   ; 
-000E   3E 00                  MVI   A,00   ; 
-0010   DB 01                  IN   01   ;B-Register
-0012   47                     MOV   B,A   ; 
-0013   06 02                  MVI   B,02   ; 
+000E   DB 01                  IN   01   ;B-Register
+0010   47                     MOV   B,A   ; 
+0011   06 02                  MVI   B,02   ; 
+0013   3E 00                  MVI   A,00   ; 
 0015   80           F1:       ADD   B   ; 
 0016   D3 04                  OUT   04   ;DAC
 0018   C3 15 00               JMP   F1   ; 

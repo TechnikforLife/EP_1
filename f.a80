@@ -8,7 +8,10 @@
         MVI C,08;
 F1:     IN 01;B-Register
         ANA C;
-        JZ F1;
+        JZ F2;
         MVI A,0xFF;
+        OUT 00;X-Register
+        JMP F1;
+F2:     MVI A,0x00;
         OUT 00;X-Register
         JMP F1;

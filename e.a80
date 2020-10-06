@@ -5,14 +5,14 @@
         MVI E,00;
         MVI H,00;
         MVI L,00;
-        MVI A,00;
         IN 01;B-Register
         MOV B,A;
         MVI B,02;
+        MVI A,00;
 
 F1:     ADD B;
-        out 04;DAC
         JC  F2;
+        out 04;DAC
         JMP F1;
 F2:     SUB B;
         out 04;DAC
