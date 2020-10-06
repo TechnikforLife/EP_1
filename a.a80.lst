@@ -1,0 +1,15 @@
+0000   3E 00                  MVI   A,00   ; 
+0002   06 00                  MVI   B,00   ; 
+0004   0E 00                  MVI   C,00   ; 
+0006   16 00                  MVI   D,00   ; 
+0008   1E 00                  MVI   E,00   ; 
+000A   26 00                  MVI   H,00   ; 
+000C   2E 00                  MVI   L,00   ; 
+000E   3E 00                  MVI   A,00   ; 
+0010   3C           F1:       INR   A   ; 
+0011   D3 04                  OUT   04   ;DAC
+0013   C3 10 00               JMP   F1   ; 
+
+
+F1:                 0010 DEFINED AT LINE 9
+                    > USED AT LINE 11

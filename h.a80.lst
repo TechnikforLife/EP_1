@@ -1,0 +1,43 @@
+0000   3E 00                  MVI   A,00   ; 
+0002   06 00                  MVI   B,00   ; 
+0004   0E 00                  MVI   C,00   ; 
+0006   16 00                  MVI   D,00   ; 
+0008   1E 00                  MVI   E,00   ; 
+000A   26 00                  MVI   H,00   ; 
+000C   2E 00                  MVI   L,00   ; 
+000E   DB 00                  IN   00   ;A-Register
+0010   4F                     MOV   C,A   ; 
+0011   0E 08                  MVI   C,08   ; 
+0013   DB 01                  IN   01   ;B-Register
+0015   47                     MOV   B,A   ; 
+0016   06 06                  MVI   B,06   ; 
+0018   78           HIGH:     MOV   A,B   ; 
+0019   D3 04                  OUT   04   ;DAC
+001B   C3 25 00               JMP   decl   ; 
+001E   3E 00        LOW:      MVI   A,00   ; 
+0020   D3 04                  OUT   04   ;DAC
+0022   C3 2D 00               JMP   incr   ; 
+0025   79           DECL:     MOV   A,C   ; 
+0026   3D           F1:       DCR   A   ; 
+0027   C2 26 00               JNZ   F1   ; 
+002A   C3 1E 00               JMP   low   ; 
+002D   16 00        INCR:     MVI   D,00   ; 
+002F   14           F2:       INR   D   ; 
+0030   79                     MOV   A,C   ; 
+0031   92                     SUB   D   ; 
+0032   C2 2F 00               JNZ   F2   ; 
+0035   C3 18 00               JMP   high   ; 
+
+
+HIGH:               0018 DEFINED AT LINE 14
+                    > USED AT LINE 29
+LOW:                001E DEFINED AT LINE 17
+                    > USED AT LINE 23
+DECL:               0025 DEFINED AT LINE 20
+                    > USED AT LINE 16
+F1:                 0026 DEFINED AT LINE 21
+                    > USED AT LINE 22
+INCR:               002D DEFINED AT LINE 24
+                    > USED AT LINE 19
+F2:                 002F DEFINED AT LINE 25
+                    > USED AT LINE 28

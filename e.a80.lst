@@ -1,0 +1,27 @@
+0000   3E 00                  MVI   A,00   ; 
+0002   06 00                  MVI   B,00   ; 
+0004   0E 00                  MVI   C,00   ; 
+0006   16 00                  MVI   D,00   ; 
+0008   1E 00                  MVI   E,00   ; 
+000A   26 00                  MVI   H,00   ; 
+000C   2E 00                  MVI   L,00   ; 
+000E   3E 00                  MVI   A,00   ; 
+0010   DB 01                  IN   01   ;B-Register
+0012   47                     MOV   B,A   ; 
+0013   06 02                  MVI   B,02   ; 
+0015   80           F1:       ADD   B   ; 
+0016   D3 04                  OUT   04   ;DAC
+0018   DA 1E 00               JC   F2   ; 
+001B   C3 15 00               JMP   F1   ; 
+001E   90           F2:       SUB   B   ; 
+001F   D3 04                  OUT   04   ;DAC
+0021   CA 15 00               JZ   F1   ; 
+0024   C3 1E 00               JMP   F2   ; 
+
+
+F1:                 0015 DEFINED AT LINE 13
+                    > USED AT LINE 16
+                    > USED AT LINE 19
+F2:                 001E DEFINED AT LINE 17
+                    > USED AT LINE 15
+                    > USED AT LINE 20

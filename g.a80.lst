@@ -1,0 +1,52 @@
+0000   3E 00                  MVI   A,00   ; 
+0002   06 00                  MVI   B,00   ; 
+0004   0E 00                  MVI   C,00   ; 
+0006   16 00                  MVI   D,00   ; 
+0008   1E 00                  MVI   E,00   ; 
+000A   26 00                  MVI   H,00   ; 
+000C   2E 00                  MVI   L,00   ; 
+000E   DB 00        STARTER:   IN   00   ;A-Register
+0010   4F                     MOV   C,A   ; 
+0011   DB 01                  IN   01   ;B-Register
+0013   57                     MOV   D,A   ; 
+0014   0E 15                  MVI   C,0x15   ; 
+0016   16 18                  MVI   D,0x18   ; 
+0018   1E 00                  MVI   E,00   ; 
+001A   26 00                  MVI   H,00   ; 
+001C   2E 00                  MVI   L,00   ; 
+001E                SHIFTER:      
+001E   7A                     MOV   A,D   ; 
+001F   17                     RAL      ; 
+0020   57                     MOV   D,A   ; 
+0021   DA 27 00               JC   F2   ; 
+0024   D2 2C 00               JNC   F3   ; 
+0027   29           F2:       DAD   H   ; 
+0028   09                     DAD   B   ; 
+0029   C3 30 00               JMP   tester   ; 
+002C   29           F3:       DAD   H   ; 
+002D   C3 30 00               JMP   tester   ; 
+0030   1C           TESTER:   INR   E   ; 
+0031   3E 08                  MVI   A,8   ; 
+0033   A3                     ANA   E   ; 
+0034   C2 3A 00               JNZ   writer   ; 
+0037   C3 1E 00               JMP   shifter   ; 
+003A   7C           WRITER:   MOV   A,H   ; 
+003B   D3 00                  OUT   00   ;x-Register
+003D   7D                     MOV   A,L   ; 
+003E   D3 01                  OUT   01   ;R-Register
+0040   C3 0E 00               JMP   starter   ; 
+
+
+STARTER:            000E DEFINED AT LINE 8
+                    > USED AT LINE 37
+SHIFTER:            001E DEFINED AT LINE 17
+                    > USED AT LINE 32
+F2:                 0027 DEFINED AT LINE 23
+                    > USED AT LINE 21
+F3:                 002C DEFINED AT LINE 26
+                    > USED AT LINE 22
+TESTER:             0030 DEFINED AT LINE 28
+                    > USED AT LINE 25
+                    > USED AT LINE 27
+WRITER:             003A DEFINED AT LINE 33
+                    > USED AT LINE 31
