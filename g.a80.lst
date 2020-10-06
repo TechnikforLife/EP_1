@@ -11,7 +11,7 @@
 0013   57                     MOV   D,A   ; 
 0014   0E 15                  MVI   C,0x15   ; 
 0016   16 18                  MVI   D,0x18   ; 
-0018   1E 00                  MVI   E,00   ; 
+0018   1E 08                  MVI   E,08   ; 
 001A   26 00                  MVI   H,00   ; 
 001C   2E 00                  MVI   L,00   ; 
 001E                SHIFTER:      
@@ -25,22 +25,20 @@
 0029   C3 30 00               JMP   tester   ; 
 002C   29           F3:       DAD   H   ; 
 002D   C3 30 00               JMP   tester   ; 
-0030   1C           TESTER:   INR   E   ; 
-0031   3E 08                  MVI   A,8   ; 
-0033   A3                     ANA   E   ; 
-0034   C2 3A 00               JNZ   writer   ; 
-0037   C3 1E 00               JMP   shifter   ; 
-003A   7C           WRITER:   MOV   A,H   ; 
-003B   D3 00                  OUT   00   ;x-Register
-003D   7D                     MOV   A,L   ; 
-003E   D3 01                  OUT   01   ;R-Register
-0040   C3 0E 00               JMP   starter   ; 
+0030   1D           TESTER:   DCR   E   ; 
+0031   CA 37 00               JZ   writer   ; 
+0034   C3 1E 00               JMP   shifter   ; 
+0037   7C           WRITER:   MOV   A,H   ; 
+0038   D3 00                  OUT   00   ;x-Register
+003A   7D                     MOV   A,L   ; 
+003B   D3 01                  OUT   01   ;R-Register
+003D   C3 0E 00               JMP   starter   ; 
 
 
 STARTER:            000E DEFINED AT LINE 8
-                    > USED AT LINE 37
+                    > USED AT LINE 35
 SHIFTER:            001E DEFINED AT LINE 17
-                    > USED AT LINE 32
+                    > USED AT LINE 30
 F2:                 0027 DEFINED AT LINE 23
                     > USED AT LINE 21
 F3:                 002C DEFINED AT LINE 26
@@ -48,5 +46,5 @@ F3:                 002C DEFINED AT LINE 26
 TESTER:             0030 DEFINED AT LINE 28
                     > USED AT LINE 25
                     > USED AT LINE 27
-WRITER:             003A DEFINED AT LINE 33
-                    > USED AT LINE 31
+WRITER:             0037 DEFINED AT LINE 31
+                    > USED AT LINE 29

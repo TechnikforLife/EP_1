@@ -11,7 +11,7 @@ starter:IN 00;A-Register
         MOV D,A;
         MVI C,0x15;
         MVI D,0x18;
-        MVI E,00;
+        MVI E,08;
         MVI H,00;
         MVI L,00;
 shifter:     
@@ -25,12 +25,10 @@ F2:     DAD H;
         JMP tester;
 F3:     DAD H;
         JMP tester;
-tester: INR E;
-        MVI A,8;
-        ANA E;
-        JNZ writer;
+tester: DCR E;
+        JZ writer;
         JMP shifter;
-writer:     MOV A,H;
+writer: MOV A,H;
         OUT 00;x-Register
         MOV A,L;
         OUT 01;R-Register
